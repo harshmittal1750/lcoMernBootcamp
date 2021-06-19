@@ -24,7 +24,7 @@ var userSchema = new moongoose.Schema({
     trim: true,
   },
   // TODO: come back here and
-  password: {
+  encryptedpassword: {
     type: String,
     role: {
       type: Number,
@@ -36,5 +36,18 @@ var userSchema = new moongoose.Schema({
     },
   },
 });
+userSchema.method = {
+  securePassword: function (plainpassword) {
+    if (!password) return "";
+    try {
+      return crypto
+        .createHmac("sha256", this.salt)
+        .update(plainpassword)
+        .digest("hex");
+    } catch (err) {
+      return "";
+    }
+  },
+};
 
 module.exports = mongoose.model("User", userSchema);
