@@ -7,37 +7,38 @@ const productSchema = new mongoose.Schema(
       type: String,
       trim: true,
       required: true,
-      maxlength: 32,
+      maxlength: 32
     },
     description: {
       type: String,
       trim: true,
       required: true,
-      maxlength: 2000,
+      maxlength: 2000
     },
     price: {
       type: Number,
       required: true,
       maxlength: 32,
-      trim: true,
+      trim: true
     },
     category: {
       type: ObjectId,
       ref: "Category",
-      required: true,
+      required: true
     },
     stock: {
-      type: Number,
+      type: Number
     },
     sold: {
       type: Number,
-      default: 0,
+      default: 0
     },
     photo: {
       data: Buffer,
-      contentType: String,
-    },
+      contentType: String
+    }
   },
   { timestamps: true }
 );
+
 module.exports = mongoose.model("Product", productSchema);
