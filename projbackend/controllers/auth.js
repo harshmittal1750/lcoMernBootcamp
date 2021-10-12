@@ -1,9 +1,5 @@
-exports.signout = (res, req) => {
+exports.signout = (req, res) => {
   res.json({
-    message: "signout success",
+    message: "User signout"
   });
 };
-
-router.get("/signout", (req, res) => {
-  res.send("user signout");
-});
